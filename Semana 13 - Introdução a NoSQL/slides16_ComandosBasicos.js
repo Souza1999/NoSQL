@@ -45,3 +45,31 @@ Caso a coleção não exista, essas operações criarão a coleção.
 	db.minhanovacoleção.insert(document1)
 
 // --------------------------------------------------
+
+// count(): conta quantos documentos existem na coleção
+	db.minhanovacoleção.count()
+
+// find(): encontra algum documento que possui determinada seleção
+	db.minhanovacoleção.find({nome:"João"})
+	db.minhanovacoleção.find( {nome:{$in:["Anísio","Márcia"]}} ) // Vai retornar os documentos cujos nomes sejam Anísio ou Márcia.
+	db.minhanovacoleção.find( {nome:/^A/} ) // Vai retornar os documentos cujos nomes começam com a letra A.
+
+// --------------------------------------------------
+
+// Alguns operadores de seleção (exemplos avulsos)
+	db.minhanovacoleção.find( {likes:50} )		// likes equals 50
+	db.minhanovacoleção.find( {likes:{$lt:50}} )	// likes less than 50
+	db.minhanovacoleção.find( {likes:{$lte:50}} )	// likes less than equals 50
+	db.minhanovacoleção.find( {likes:{$gt:50}} )	// likes greater than 50
+	db.minhanovacoleção.find( {likes:{$gte:50}} )	// likes greater than equals 50
+	db.minhanovacoleção.find( {likes:{$ne:50}} )	// likes not equals 50
+
+// --------------------------------------------------
+
+// Operadores OR e IN
+	db.minhanovacoleção.find( {$or: [{"nome" : "Alvara"}, {"nome" : "Alvaro"}]} )
+	db.minhanovacoleção.find( {nome: {$in:["Márcia", "Anísio"]}} )	// Para mim, esse é mais simples.
+
+// --------------------------------------------------
+
+// Slide 20
