@@ -72,4 +72,55 @@ Caso a coleção não exista, essas operações criarão a coleção.
 
 // --------------------------------------------------
 
-// Slide 20
+/*
+Para especificar quais campos serão retornados, usa-se o 1 ou o 0 (exemplos abaixo).
+1 → Desejo que o campo seja retornado.
+0 → Deseo que o campo NÃO seja retornado.
+*/
+
+	db.minhanovacoleção.find({
+		nome: {$in: ["Anísio", "Márcia"]}}, {nome:1, idade:1}		// Desejo que retorne nome e idade.
+	)
+
+	db.minhanovacoleção.find({
+		nome: {$in: ["Anísio", "Márcia"]}}, {nome:1, idade:1, _id:0}	// Desejo que retorne nome e idade, mas não o id.
+	)
+
+// --------------------------------------------------
+
+// Comando find() para documentos embutidos ou incorporados
+// Exemplos de um banco de dados meu:
+
+// O campo "habilidades" é do tipo objeto. E eu quero acessar apenas a chave "armas" dele.
+	db.personagensDeAção.find(
+		{"habilidades.armas":"10"},
+		{_id:0}
+	)
+
+// Ainda no campo "habilidades", eu quero os documentos cujas chaves "armas" e "luta" têm valores de 10.
+	db.personagensDeAção.find(
+		{"habilidades.armas":"10", "habilidades.luta":"10"},
+		{_id:0}
+	)
+	
+// --------------------------------------------------
+
+// Acessando um elemento de um array, através do índice.
+	db.minhanovacoleção.find(
+		{"hobbies.0":"filmes"},
+		{_id:0}
+	)
+	
+// Considerando a ordem dos elementos
+	db.minhanovacoleção.find(
+		{"hobbies":["filmes","futebol"]},
+		{_id:0}
+	)
+
+// Sem considerar a ordem dos elementos
+	db.minhanovacoleção.find(
+		{"hobbies": { $all:["futebol","filmes"] }},
+		{_id:0}
+	)
+
+// slide 26.
