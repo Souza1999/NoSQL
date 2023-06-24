@@ -123,4 +123,23 @@ Para especificar quais campos serão retornados, usa-se o 1 ou o 0 (exemplos aba
 		{_id:0}
 	)
 
-// slide 26.
+// --------------------------------------------------
+
+// Update
+
+// --------------------------------------------------
+
+// Delete
+	db.minhanovacoleção.deleteOne({nome:"João"})
+
+// --------------------------------------------------
+
+/* 
+Comandos collection.update() e count() estão obsoletos.
+
+Pelo visto não dá para mudar o tipo das chaves. Exemplo:
+a idade estava em string e e queria mudar para inteiro
+através de comandos no Mongosh, mas pelo visto isso não
+é possível.
+
+*/
