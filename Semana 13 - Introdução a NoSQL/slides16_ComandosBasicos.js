@@ -46,8 +46,8 @@ Caso a coleção não exista, essas operações criarão a coleção.
 
 // --------------------------------------------------
 
-// count(): conta quantos documentos existem na coleção
-	db.minhanovacoleção.count()
+// countDocuments(): conta quantos documentos existem na coleção
+	db.minhanovacoleção.countDocuments()
 
 // find(): encontra algum documento que possui determinada seleção
 	db.minhanovacoleção.find({nome:"João"})
